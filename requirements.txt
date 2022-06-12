@@ -8,3 +8,5 @@ idna==3.3
 multidict==6.0.2
 websockets==10.3
 yarl==1.7.2
+
+requests~=2.28.0
