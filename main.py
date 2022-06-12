@@ -22,7 +22,8 @@ def update_data(server: WebsocketServer, client, town):
         try:
             server.send_message(client, get_weather_data(town))
             time.sleep(60)
-        except (Exception, ):
+        except Exception as e:
+            print(e)
             break
 
 
@@ -30,7 +31,6 @@ def message_received(client, server, message):
     data = message.split('|')
     print(data)
     if data[0] == 'innit':
-        server.send_message(client, get_weather_data(data[1]))
         threading.Thread(target=update_data, args=(server, client, data[1]), daemon=True).start()
 
 
