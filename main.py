@@ -8,6 +8,7 @@ import requests
 def get_weather_data(town):
     r = requests.get('https://api.weatherapi.com/v1/current.json?key={}&q={}&aqi=no'.format(os.environ.get('API'), town))
     data = r.json()
+    print(data)
     icon_id = images.index(int(data['current']['condition']['icon'].split('/')[-1].split('.')[0]))
     return 'update|{}|{}|{}|{}'.format(int(data['current']['temp_c']), data['current']['humidity'],
                                            data['current']['is_day'], icon_id)
