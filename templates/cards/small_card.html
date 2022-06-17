@@ -1,0 +1,20 @@
+{% extends 'cards/base_card.html' %}
+{% block addtional %}mb-4{% endblock %}
+{% block content %}
+    <h6 class="card-subtitle mb-0 text-muted">{{ name }}</h6>
+    <div class="card-text">
+        <h1 class="mb-0" style="font-weight: bold;">
+            <i id="{{ id }}_icon" style="font-size: 40px;color: {{ color }};" class="{{ icon }} align-middle"></i>
+            <span class="align-middle" id="{{ id }}_data">
+                {% if data|length > 0 %}
+                    {{ data[-1][1] }}
+                {% else %}
+                    0
+                {% endif %}
+            </span>
+            <span id="{{ id }}_end" class="align-middle" style="font-weight: 400;">{{ end }}</span></h1>
+        {% with id=id, color=color, data=data %}
+            {% include 'small_chart.html' %}
+        {% endwith %}
+    </div>
+{% endblock %}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Sensor data</title>
+    <style>
+        .apexcharts-xcrosshairs,
+        .apexcharts-ycrosshairs {
+            display: none;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column vh-100" style="overflow:hidden;">
+<div class="mt-4 ms-4 me-4 h-100">
+    <div class="row h-100">
+        <div>
+            {% include 'cards/main_card.html' %}
+        </div>
+    </div>
+</div>
+<footer class="footer mt-auto ms-4 me-4">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            {% with name='Home Temperature', icon='bi bi-thermometer-half', color='#06A77D', id='home_temperature', end='°C', data=home_temperature_data %}
+                {% include 'cards/small_card.html' %}
+            {% endwith %}
+        </div>
+        <div class="col-md-4">
+            {% with name='Home Humidity', icon='bi bi-droplet-fill', color='#1098F7', id='home_humidity', end='%', data=home_humidity_data %}
+                {% include 'cards/small_card.html' %}
+            {% endwith %}
+        </div>
+        <div class="col-md-4">
+            {% with name='CO₂', icon='bi bi-wind', color='#9448BC', id='co2', end='ppm', data=co2_data %}
+                {% include 'cards/small_card.html' %}
+            {% endwith %}
+        </div>
+        <div class="col-md-4">
+            {% with name='Outdoor Temperature', icon='bi bi-thermometer-half', color='#06A77D', id='outdoor_temperature', end='°C', data=outdoor_temperature_data %}
+                {% include 'cards/small_card.html' %}
+            {% endwith %}
+        </div>
+        <div class="col-md-4">
+            {% with name='Outdoor Humidity', icon='bi bi-droplet-fill', color='#1098F7', id='outdoor_humidity', end='%', data=outdoor_humidity_data %}
+                {% include 'cards/small_card.html' %}
+            {% endwith %}
+        </div>
+        <div class="col-md-4">
+            {% with name='Pressure', icon='bi bi-speedometer2', color='#FE5F55', id='pressure', end='hPa', data=pressure_data %}
+                {% include 'cards/small_card.html' %}
+            {% endwith %}
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+</body>
+</html>

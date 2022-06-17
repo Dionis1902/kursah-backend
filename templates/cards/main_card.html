@@ -1,0 +1,28 @@
+{% extends 'cards/base_card.html' %}
+{% block addtional %}h-100{% endblock %}
+{% block content %}
+    <div class="card-text d-flex flex-column h-100">
+        <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center">
+                <i id="main_icon" style="font-size: 60px;vertical-align: middle;"></i>
+                <div class="ms-2">
+                    <span id="main_name" class="fw-bolder"></span><br>
+                    <span id="main_data" class="fw-bold"></span> <span id="main_end" class="fw-bold" style="font-weight: 400;"></span>
+                </div>
+            </div>
+            <div>
+                <select class="form-select" aria-label="data" >
+                  <option value="home_temperature" selected>Home Temperature</option>
+                  <option value="home_humidity">Home Humidity</option>
+                  <option value="co2">CO₂</option>
+                  <option value="outdoor_temperature">Outdoor Temperature</option>
+                  <option value="outdoor_humidity">Outdoor Humidity</option>
+                  <option value="pressure">Pressure</option>
+                </select>
+            </div>
+        </div>
+        <div class="h-100 pb-2">
+            <div id="main_chart" class=""></div>
+        </div>
+    </div>
+{% endblock %}
